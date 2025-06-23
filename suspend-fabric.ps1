@@ -3,6 +3,8 @@ Param(
     [ValidateSet("suspend")] # Only allow "suspend" for now
     [string]$operation
 )
+# Reference
+# https://learn.microsoft.com/en-us/fabric/enterprise/pause-resume
 
 # Get access token
 # There will be breaking change in Az module 14.0.0, so we need to use Get-AzAccessToken instead of Get-AzAccessToken -ResourceUrl "https://management.azure.com/"
