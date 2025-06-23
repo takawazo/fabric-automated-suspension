@@ -7,7 +7,7 @@ description: A PowerShell script to suspend Microsoft Fabric capacities using Az
 
 ## Overview
 
-This blog explains how to automate the suspension of Microsoft Fabric capacities using PowerShell and Azure Automation. This helps reduce costs by stopping unused capacities during off-hours.
+This article explains how to automate the suspension of Microsoft Fabric capacities using PowerShell and Azure Automation. This helps reduce costs by stopping unused capacities during off-hours.
 
 ## What the Script Does
 
