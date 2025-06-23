@@ -46,9 +46,9 @@ if ($operation -eq "suspend") {
             $response = Invoke-RestMethod -Uri $url -Method Post -Headers $headers -ErrorAction Stop
 
             if ($null -eq $response) {
-                Write-Output "✅ [$operation] succeeded for: $ResourceID (no response body)"
+                Write-Output "[OK] [$operation] succeeded for: $ResourceID (no response body)"
             } else {
-                Write-Output "✅ [$operation] succeeded for: $ResourceID"
+                Write-Output "[OK] [$operation] succeeded for: $ResourceID"
                 $response | ConvertTo-Json -Depth 5 | Write-Output
             }
 
@@ -60,10 +60,10 @@ if ($operation -eq "suspend") {
                 $message = $errorJson.error.message
 
                 if ($message -like "*Service is not ready to be updated*") {
-                    Write-Output "ℹ️ [$operation] skipped for: $ResourceID"
+                    Write-Output "(i) [$operation] skipped for: $ResourceID"
                     Write-Output "  • Reason: Capacity is not running (already stopped or not ready)"
                 } else {
-                    Write-Output "❌ [$operation] failed for: $ResourceID"
+                    Write-Output "X [$operation] failed for: $ResourceID"
                     Write-Output "  • Error Code       : $($errorJson.error.code)"
                     Write-Output "  • Message          : $message"
                     Write-Output "  • SubCode          : $($errorJson.error.subCode)"
@@ -72,7 +72,7 @@ if ($operation -eq "suspend") {
                    #Write-Output "  • RootActivityId   : $($errorJson.error.details[0].message)"
                 }
             } catch {
-                Write-Error "❌ [$operation] failed for: $ResourceID"
+                Write-Error "X [$operation] failed for: $ResourceID"
                 Write-Error "  • Could not parse error message as JSON"
                 Write-Error "  • Raw Message: $rawMessage"
             }
